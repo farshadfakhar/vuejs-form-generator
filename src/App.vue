@@ -5,6 +5,10 @@
       v-model="data"
       :schema="schema"
       :on-submit="onSubmit"
+      validations-container-class="row"
+      validation-container-class="col-lg-2"
+      input-container-class="form-group"
+      input-class="form-control"
     />
   </div>
 </template>
@@ -22,7 +26,7 @@ export default {
       data: {},
       schema: [
         {
-          type: "text",
+          type: "textarea",
           name: "name",
           label: "Name",
           classes: { "form-control": true },
@@ -33,6 +37,14 @@ export default {
           type: "text",
           name: "phone",
           label: "Cell Phone",
+          classes: { "form-control": true },
+          rules: "required",
+          key: "tel"
+        },
+        {
+          type: "date",
+          name: "birt",
+          label: "Birth Day",
           classes: { "form-control": true },
           rules: "required",
           key: "tel"
