@@ -1,28 +1,42 @@
 <template>
-  <div>
-    <v-validate-observer ref="gForm">
-      <v-validate v-for="(i, index) in schema" :key="index" :rules="i.rules" v-slot="{ errors }" :name="i.label">
-        <text-input
-          :type="i.type"
-          :label="i.label"
-          :name="i.key"
-          :id="i.id"
-          :classes="i.classes"
-          v-model="content[i.key]"
-          :rules="i.rules"
-          :place-holder="i.placeHolder"
-          @input="handleInput()"
-        />
-        <span>{{ errors[0] }}</span>
-      </v-validate>
-      <button @click="onSubmit">submit</button>
-    </v-validate-observer>
-  </div>
+  <v-validate-observer ref="gForm">
+    <div :class="validationsContainerClass">
+      <div
+        v-for="(i, index) in schema"
+        :key="index"
+        :class="validationContainerClass"
+      >
+        <v-validate :rules="i.rules" v-slot="{ errors }" :name="i.label">
+          <component
+            v-bind:is="bestInput(i.type)"
+            :type="i.type"
+            :label="i.label"
+            :name="i.key"
+            :id="i.id"
+            :classes="i.classes"
+            v-model="content[i.key]"
+            :rules="i.rules"
+            :place-holder="i.placeHolder"
+            :input-container-class="inputContainerClass"
+            :input-class="inputClass"
+            @input="handleInput()"
+          ></component>
+          <span>{{ errors[0] }}</span>
+        </v-validate>
+      </div>
+    </div>
+    <button @click="onSubmit">submit</button>
+  </v-validate-observer>
 </template>
 <script>
 import TextInput from "./TextInput.vue";
+import TextArea from "./TextArea.vue";
+import TalkhabiDatePicker from "./TalkhabiDatePicker.vue";
 export default {
   props: {
+    value: {
+      default: {}
+    },
     /**
      * Action on submit
      */
@@ -30,16 +44,22 @@ export default {
       type: Function
     },
     /**
-     * --
-     */
-    value: {
-      default: {}
-    },
-    /**
      * Form Schema
      */
     schema: {
       type: Array
+    },
+    validationsContainerClass: {
+      type: String
+    },
+    validationContainerClass: {
+      type: String
+    },
+    inputContainerClass: {
+      type: String
+    },
+    inputClass: {
+      type: String
     }
   },
   watch: {
@@ -55,7 +75,7 @@ export default {
       content: this.value
     };
   },
-  components: { TextInput },
+  components: { TextInput, TextArea },
   methods: {
     handleInput() {
       this.$emit("input", this.content);
@@ -66,6 +86,12 @@ export default {
      */
     validate() {
       return this.$refs.gForm.validate();
+    },
+
+    bestInput(type) {
+      if (type == "textarea") return TextArea;
+      if (type == "date") return TalkhabiDatePicker
+      return TextInput;
     }
   }
 };
