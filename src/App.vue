@@ -1,19 +1,55 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <form-creator
+      ref="form"
+      v-model="data"
+      :schema="schema"
+      :on-submit="onSubmit"
+    />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import FormCreator from "./components/FormCreator.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
+    FormCreator
+  },
+  data() {
+    return {
+      data: {},
+      schema: [
+        {
+          type: "text",
+          name: "name",
+          label: "Name",
+          classes: { "form-control": true },
+          rules: "digits:11|required",
+          key: "name"
+        },
+        {
+          type: "text",
+          name: "phone",
+          label: "Cell Phone",
+          classes: { "form-control": true },
+          rules: "required",
+          key: "tel"
+        }
+      ]
+    };
+  },
+  methods: {
+    onSubmit() {
+      this.$refs.form.validate().then(result => {
+        if (result) {
+          alert("Form submitted!");
+        }
+      });
+    }
   }
-}
+};
 </script>
 
 <style>
