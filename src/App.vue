@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="k-rtl">
     <form-creator
       ref="form"
       v-model="data"
@@ -25,6 +25,13 @@ export default {
     return {
       data: {},
       schema: [
+      ]
+    };
+  },
+  mounted() {
+    var vm = this;
+    setTimeout(function() {
+      vm.schema = [
         {
           type: "textarea",
           name: "name",
@@ -45,12 +52,27 @@ export default {
           type: "date",
           name: "birt",
           label: "Birth Day",
-          classes: { "form-control": true },
+          classes: {},
           rules: "required",
           key: "tel"
+        },
+        {
+          type: "multiselect",
+          name: "likes",
+          label: "Sports",
+          classes: {},
+          rules: "required",
+          key: "likes",
+          dataSource: [
+            {id: 1, name: 'foot'},
+            {id: 2, name: 'bal'},
+            {id: 3, name: 'basklet'},
+          ],
+          dataTextField: 'name',
+          dataValueField: 'id'
         }
-      ]
-    };
+      ];
+    }, 4000);
   },
   methods: {
     onSubmit() {
@@ -64,13 +86,4 @@ export default {
 };
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style></style>

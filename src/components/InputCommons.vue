@@ -30,6 +30,15 @@ export default {
     inputClass: {
       type: String
     },
+    dataSource: {
+      type: Array
+    },
+    dataTextField: {
+      type: String
+    },
+    dataValueField: {
+      type: String
+    },
     value: {}
   },
   watch: {

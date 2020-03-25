@@ -19,6 +19,9 @@
             :place-holder="i.placeHolder"
             :input-container-class="inputContainerClass"
             :input-class="inputClass"
+            :data-source="i.dataSource"
+            :data-text-field="i.dataTextField"
+            :data-value-field="i.dataValueField"
             @input="handleInput()"
           ></component>
           <span>{{ errors[0] }}</span>
@@ -32,6 +35,7 @@
 import TextInput from "./TextInput.vue";
 import TextArea from "./TextArea.vue";
 import TalkhabiDatePicker from "./TalkhabiDatePicker.vue";
+import KendoMultiSelect from "./KendoMultiSelect.vue";
 export default {
   props: {
     value: {
@@ -90,7 +94,8 @@ export default {
 
     bestInput(type) {
       if (type == "textarea") return TextArea;
-      if (type == "date") return TalkhabiDatePicker
+      if (type == "date") return TalkhabiDatePicker;
+      if (type == "multiselect") return KendoMultiSelect;
       return TextInput;
     }
   }
