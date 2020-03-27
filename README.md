@@ -2,19 +2,16 @@
 
 ## Usage
 
-- ```bash
+-  Install 
+```bash
     npm i from-generator
   ```
-
-````
-- ```javascript
+- Import in app.js
+```javascript
     import 'from-generator';
-````
+```
 
-- ```
-
-  ```
-
+- Use it in your template file
 ```html
 <form-creator
   ref="form"
@@ -28,8 +25,7 @@
 />
 ```
 
--
-
+- Define your form schema
 ```javascript
     data() {
     schema: [
