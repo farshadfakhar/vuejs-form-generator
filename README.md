@@ -101,3 +101,15 @@
       ]
     }
 ```
+
+- Add on submit method
+
+```javascript
+    onSubmit() {
+      this.$refs.form.validate().then(result => {
+        if (result) {
+          alert("Form submitted!");
+        }
+      });
+    }
+```
