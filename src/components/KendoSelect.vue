@@ -1,8 +1,9 @@
 <template>
   <div :class="inputContainerClass">
-    <label :for="id">{{ label }}</label>
-    <multi-select
+    <label :for="id" style="display: block">{{ label }}</label>
+    <drop-down-list
       :id="id"
+      style="display: inline"
       :name="name"
       :ref="name"
       :type="type"
@@ -11,6 +12,7 @@
       :data-source="dataSource"
       :data-text-field="dataTextField"
       :data-value-field="dataValueField"
+      :filter="'contains'"
       @input="handleInput(content)"
     />
   </div>
@@ -21,13 +23,18 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "@progress/kendo-theme-default/dist/all.css";
 
 import {
-  MultiSelect,
+  DropDownList,
   DropdownsInstaller
 } from "@progress/kendo-dropdowns-vue-wrapper";
-import "@progress/kendo-ui/js/kendo.multiselect";
+import '@progress/kendo-ui/js/kendo.dropdownlist'
 export default {
   extends: InputCommons,
-  components: { MultiSelect },
+  components: { DropDownList },
   use: { DropdownsInstaller }
 };
 </script>
+<style>
+/* .k-dropdown{
+  display: inline !important;
+} */
+</style>

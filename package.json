@@ -1,11 +1,17 @@
 {
   "name": "from-generator",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.1.2",
+  "private": false,
+  "main": "./dist/form-generator.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "build-bundle": "vue-cli-service build --target lib --name form-generator ./src/components/index.js",
     "lint": "vue-cli-service lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/farshadfakhar/vuejs-form-generator"
   },
   "dependencies": {
     "@progress/kendo-dropdowns-vue-wrapper": "^2020.1.305",
@@ -15,6 +21,7 @@
     "core-js": "^3.6.4",
     "jquery": "^3.4.1",
     "popper.js": "^1.16.1",
+    "pretty-checkbox-vue": "^1.1.9",
     "vee-validate": "^3.2.5",
     "vue": "^2.6.11",
     "vue-persian-datetime-picker": "^2.1.4"
@@ -28,6 +35,22 @@
     "eslint-plugin-vue": "^6.1.2",
     "vue-template-compiler": "^2.6.11"
   },
+  "keywords": [
+    "form",
+    "vuejs",
+    "form creator",
+    "form generator",
+    "dynamic form",
+    "json form",
+    "easy form"
+  ],
+  "files": [
+    "dist/*",
+    "src/*",
+    "public/*",
+    "*.json",
+    "*.js"
+  ],
   "eslintConfig": {
     "root": true,
     "env": {

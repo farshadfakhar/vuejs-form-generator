@@ -36,6 +36,8 @@ import TextInput from "./TextInput.vue";
 import TextArea from "./TextArea.vue";
 import TalkhabiDatePicker from "./TalkhabiDatePicker.vue";
 import KendoMultiSelect from "./KendoMultiSelect.vue";
+import KendoSelect from "./KendoSelect.vue";
+import CheckBox from "./CheckBox.vue";
 export default {
   props: {
     value: {
@@ -95,7 +97,9 @@ export default {
     bestInput(type) {
       if (type == "textarea") return TextArea;
       if (type == "date") return TalkhabiDatePicker;
+      if (type == "select") return KendoSelect;
       if (type == "multiselect") return KendoMultiSelect;
+      if (type == "checkbox") return CheckBox;
       return TextInput;
     }
   }

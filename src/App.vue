@@ -25,13 +25,6 @@ export default {
     return {
       data: {},
       schema: [
-      ]
-    };
-  },
-  mounted() {
-    var vm = this;
-    setTimeout(function() {
-      vm.schema = [
         {
           type: "textarea",
           name: "name",
@@ -57,6 +50,22 @@ export default {
           key: "tel"
         },
         {
+          type: "checkbox",
+          name: "sure",
+          label: "Sure?",
+          classes: {},
+          rules: "required",
+          key: "sure"
+        },
+        {
+          type: "checkbox",
+          name: "sure",
+          label: "Sure?",
+          classes: {},
+          rules: "required",
+          key: "sure"
+        },
+        {
           type: "multiselect",
           name: "likes",
           label: "Sports",
@@ -70,9 +79,25 @@ export default {
           ],
           dataTextField: 'name',
           dataValueField: 'id'
+        },
+        {
+          type: "select",
+          name: "sex",
+          label: "Sex",
+          classes: {},
+          rules: "required",
+          key: "sex",
+          dataSource: [
+            {id: 1, name: 'male'},
+            {id: 2, name: 'female'},
+          ],
+          dataTextField: 'name',
+          dataValueField: 'id'
         }
-      ];
-    }, 4000);
+      ]
+    };
+  },
+  mounted() {
   },
   methods: {
     onSubmit() {
@@ -86,4 +111,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.k-rtl{
+  text-align: right;
+}
+</style>

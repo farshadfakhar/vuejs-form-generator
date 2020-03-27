@@ -1,7 +1,7 @@
 <template>
   <div :class="inputContainerClass">
     <label :for="id">{{ label }}</label>
-    <multi-select
+    <p-check
       :id="id"
       :name="name"
       :ref="name"
@@ -11,23 +11,20 @@
       :data-source="dataSource"
       :data-text-field="dataTextField"
       :data-value-field="dataValueField"
-      @input="handleInput(content)"
+      @input.native="handleInput(content)"
+      color="success"
     />
   </div>
 </template>
 <script>
 import InputCommons from "./InputCommons.vue";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "@progress/kendo-theme-default/dist/all.css";
+import "pretty-checkbox/dist/pretty-checkbox.min.css";
+import PrettyCheckbox from "pretty-checkbox-vue";
+import PrettyCheck from "pretty-checkbox-vue/check";
 
-import {
-  MultiSelect,
-  DropdownsInstaller
-} from "@progress/kendo-dropdowns-vue-wrapper";
-import "@progress/kendo-ui/js/kendo.multiselect";
 export default {
   extends: InputCommons,
-  components: { MultiSelect },
-  use: { DropdownsInstaller }
+  components: { 'p-check': PrettyCheck },
+  use: { PrettyCheckbox }
 };
 </script>
