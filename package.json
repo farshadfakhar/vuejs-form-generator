@@ -1,6 +1,6 @@
 {
   "name": "from-generator",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "private": false,
   "main": "./dist/form-generator.common.js",
   "scripts": {
@@ -19,7 +19,7 @@
     "@progress/kendo-ui": "^2020.1.219",
     "bootstrap": "^4.4.1",
     "core-js": "^3.6.4",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "popper.js": "^1.16.1",
     "pretty-checkbox-vue": "^1.1.9",
     "vee-validate": "^3.2.5",
